@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from netflix.models import Filme
+
+admin.site.register(Filme)
