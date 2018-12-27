@@ -53,13 +53,14 @@ class Filme(models.Model):
     titulo = models.CharField(max_length=100)
     resumo = models.TextField(max_length=600)
     genero = models.ForeignKey(Genero, on_delete=models.PROTECT)
-    duracao = models.DurationField(default=0, verbose_name='Duração (min)')
+    produtora = models.ForeignKey(Produtora, on_delete=models.PROTECT)
     elenco = models.ManyToManyField(Ator)
     link = models.URLField()
-    estrelas = models.IntegerField(default=0)
     idioma = models.ForeignKey(Idioma, on_delete=models.PROTECT)
-    produtora = models.ForeignKey(Produtora, on_delete=models.PROTECT)
+    duracao = models.DurationField(default=0, verbose_name='Duração (min)')
+    estrelas = models.IntegerField(default=0)
     lancamento = models.DateField()
+    imagem = models.ImageField(upload_to='fotos/', null=True)
 
     def __str__(self):
         return self.titulo
